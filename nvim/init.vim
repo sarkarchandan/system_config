@@ -18,6 +18,7 @@ Plug 'ryanoasis/vim-devicons' " Dev Icons
 Plug 'https://github.com/tc50cal/vim-terminal.git' " Vim Terminal
 Plug 'projekt0n/github-nvim-theme' " GitHub Theme
 Plug 'https://github.com/preservim/tagbar.git' " Tagbar
+Plug 'valloric/youcompleteme' " YouCompleteMe
 
 " NOTES
 " Proper functions of many of these plugins depends upon the latest or recent
@@ -28,6 +29,8 @@ Plug 'https://github.com/preservim/tagbar.git' " Tagbar
 " Tagbar needs the installation ctags: https://docs.ctags.io/en/latest/autotools.html
 " NerdTree needs at least the following key mapping to be able to function as
 " we expect to.
+" YouCompleteMe plugin requires that we compile the language servers
+" explicitly. Documentation for the plugin can be found here: https://vimawesome.com/plugin/youcompleteme#linux-64-bit
 call plug#end()
 
 " NERDTree filesystem traversal customizations
