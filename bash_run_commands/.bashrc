@@ -138,12 +138,26 @@ PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/23.5/cuda/12.1/bin:$PATH
 # Configuring cargo for Rust
 export PATH
 . "$HOME/.cargo/env"
+
+# Configure Golang
+export PATH=$PATH:/home/ws/nj4412/.local/go/bin
+
 # Aliases
+alias gclone='git clone'
 alias gstat='git status'
 alias gadd='git add'
-alias gcomm='git commit'
+alias gcom='git commit'
+alias gpull='git pull'
 alias gpush='git push'
 alias gstash='git stash'
+
+alias dimgb='docker image build'
+alias dcorun='docker container run'
+alias dcols='docker container ls'
+
+alias jumpref='cd ~/workspace/references'
+alias jumpproj='cd ~/workspace/projects'
+
 
 # Temp config
 export GI_TYPELIB_PATH="/usr/local/lib/x86_64-linux-gnu/girepository-1.0"

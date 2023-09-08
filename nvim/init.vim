@@ -4,8 +4,17 @@
 :set mouse=a
 :set shiftwidth=4
 :set tabstop=4
-:set encoding=UTF-8
+" Following is for documentation only. We might want to set different width
+" for the code space for working with different programmming languages. Hence,
+" it is advised to set the colorcolumn property from the code editor window
+" instead.
+":set colorcolumn=80|100
+
+" Setting guifont property and the encoding are important to set the editor 
+" font as well as it is important for the github-nvim-theme to work properly 
+" with the NerdTree.
 :set guifont=DejaVuSansMNerdFontMono-Regular
+:set encoding=UTF-8
 
 call plug#begin()
 
@@ -30,10 +39,18 @@ Plug 'valloric/youcompleteme' " YouCompleteMe
 " NerdTree needs at least the following key mapping to be able to function as
 " we expect to.
 " YouCompleteMe plugin requires that we compile the language servers
-" explicitly. Documentation for the plugin can be found here: https://vimawesome.com/plugin/youcompleteme#linux-64-bit
+" explicitly. Documentation for the plugin can be found here: 
+" https://vimawesome.com/plugin/youcompleteme#linux-64-bit
 call plug#end()
 
 " NERDTree filesystem traversal customizations
+" It is important to set all four of them as a basic key mapping
+" so that the toggling of NerdTree can happen seamlessly. With the
+" following settings we toggle the NerdTree with ctrl + t.
+" Important reference for NerdTree file system interaction:
+" https://sookocheff.com/post/vim/creating-a-new-file-or-directoryin-vim-using-nerdtree/
+" Important reference for workspace switching while NerdTree is enabled:
+" https://stackoverflow.com/questions/1656591/how-to-jump-back-to-nerdtree-from-file-in-tab
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
