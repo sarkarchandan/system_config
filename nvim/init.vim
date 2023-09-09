@@ -8,7 +8,7 @@
 " for the code space for working with different programmming languages. Hence,
 " it is advised to set the colorcolumn property from the code editor window
 " instead.
-":set colorcolumn=80|100
+":set colorcolumn=80|120
 
 " Setting guifont property and the encoding are important to set the editor 
 " font as well as it is important for the github-nvim-theme to work properly 

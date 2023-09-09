@@ -116,33 +116,50 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Powerline config
+# Add .local/bin to the path
+export PATH=$PATH:$HOME/.local/
 export PATH=$PATH:$HOME/.local/bin
-
+ 
 # Powerline configuration
-if [ -f $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh ]; then
+if [ -f $HOME/.local/lib/python3.10/site-packages/powerline/bindings/bash/powerline.sh ]; then
     $HOME/.local/bin/powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
-    source $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+    source $HOME/.local/lib/python3.10/site-packages/powerline/bindings/bash/powerline.sh
 fi
 
-# Configuring nvidia-hpc-sdk
-MANPATH=$MANPATH:/opt/nvidia/hpc_sdk/Linux_x86_64/23.5/compilers/man
-MANPATH=$MANPATH:/opt/nvidia/hpc_sdk/Linux_x86_64/23.5/comm_libs/mpi/man
-export MANPATH
-PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/23.5/compilers/bin:$PATH
-PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/23.5/comm_libs/mpi/bin:$PATH
-PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/23.5/cuda/12.1/include:$PATH
-PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/23.5/cuda/12.1/bin:$PATH
-# Configuring cargo for Rust
-export PATH
+# NVIDIA Path Config
+export NV_HPC_HOME=/usr/local/nvidia/hpc_sdk
+export PATH=${NV_HPC_HOME}/Linux_x86_64/23.1/compilers/bin:${PATH}
+export MANPATH=$MANPATH:${NV_HPC_HOME}/Linux_x86_64/23.1/compilers/man
+export LD_LIBRARY_PATH=${NV_HPC_HOME}/Linux_x86_64/23.1/cuda/lib64:$LD_LIBRARY_PATH
+
+export OpenCL_INCLUDE_DIRS=${NV_HPC_HOME}/Linux_x86_64/23.1/cuda/include
+export CUDA_INCLUDE_DIRS=${NV_HPC_HOME}/Linux_x86_64/23.1/cuda/include
+export OpenCL_LIBRARIES=${NV_HPC_HOME}/Linux_x86_64/23.1/cuda/12.0/targets/x86_64-linux/lib
+
+export PATH=${OpenCL_INCLUDE_DIRS}:${PATH}
+
+## Add OpenMPI to Path
+export PATH=${NV_HPC_HOME}/Linux_x86_64/23.1/comm_libs/mpi/bin:$PATH
+export MANPATH=$MANPATH:${NV_HPC_HOME}/Linux_x86_64/23.1/comm_libs/mpi/man
+
+# Rust-Cargo Config
 . "$HOME/.cargo/env"
 
-# Configure Golang
-export PATH=$PATH:/home/ws/nj4412/.local/go/bin
+# K8s Config
+source <(kubectl completion bash)
+alias k=kubectl
 
-# Aliases
+# Golang
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/workspace/go
+export PATH=$PATH:$GOPATH/bin
+
+#Unreal
+alias Unreal='/home/chandan/workspace/apps/unreal/Engine/Binaries/Linux/UnrealEditor'
+
+# Conveninent Aliases
 alias gclone='git clone'
 alias gstat='git status'
 alias gadd='git add'
@@ -158,8 +175,6 @@ alias dcols='docker container ls'
 
 alias jumpref='cd ~/workspace/references'
 alias jumpproj='cd ~/workspace/projects'
-
-
-# Temp config
-export GI_TYPELIB_PATH="/usr/local/lib/x86_64-linux-gnu/girepository-1.0"
-export PKG_CONFIG_PATH="/usr/local/lib/x86_64-linux-gnu/pkgconfig/"
+alias jumpofc='cd ~/workspace/official'
+ 
+HISTTIMEFORMAT="%d/%m/%y %T "
