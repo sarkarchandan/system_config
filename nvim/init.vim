@@ -38,9 +38,11 @@ Plug 'valloric/youcompleteme' " YouCompleteMe
 " Tagbar needs the installation ctags: https://docs.ctags.io/en/latest/autotools.html
 " NerdTree needs at least the following key mapping to be able to function as
 " we expect to.
-" YouCompleteMe plugin requires that we compile the language servers
-" explicitly. Documentation for the plugin can be found here: 
-" https://vimawesome.com/plugin/youcompleteme#linux-64-bit
+" YouCompleteMe plugin requires that we compile the language servers.
+" Installation instructions for YCM is available in: https://ycm-core.github.io/YouCompleteMe/#installation
+" We first need to install the 'valloric/youcompleteme' using VimPlug, which will show a warning that the
+" YCM binary is not found. To correct this we need to run /home/ws/nj4412/.local/share/nvim/plugged/youcompleteme/install.py 
+" file specifying the required completers.
 call plug#end()
 
 " NERDTree filesystem traversal customizations
