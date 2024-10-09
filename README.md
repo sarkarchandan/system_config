@@ -40,4 +40,7 @@ dependency of the softwares that we develop.
 Using the `nvim/init.vim` needs that we are using the recent version of nvim for all underlying plugins to work in the
 expected manner. We also need to ensure that we installed nerd-fonts, Golang, ctag etc..
 
+## Bash Powerline
+Use instructions from this [guideline](https://medium.com/earlybyte/powerline-for-bash-6d3dd004f6fc) to install and
+configure bash powerline.
 
